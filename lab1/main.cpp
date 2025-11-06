@@ -1,35 +1,28 @@
-#include "Lab_A.h"
+#include <stdio.h>
+#include "avl.h"
+#include "bst.h"
 
 int main() {
-	Node* set1 = NULL;
-	Node* set2 = NULL;
+    AVLNode* avl_root = NULL;
+    BSTNode* bst_root = NULL;
 
-	AddElement(&set1, 3);
-	AddElement(&set1, 1);
-	AddElement(&set1, 4);
-	AddElement(&set1, 2);
-	printf("Set 1: ");
-	printSet(set1);
+    avl_root = avl_insert(avl_root, 10);
+    avl_root = avl_insert(avl_root, 20);
+    avl_root = avl_insert(avl_root, 5);
 
-	AddElement(&set2, 4);
-	AddElement(&set2, 5);
-	AddElement(&set2, 2);
-	printf("Set 2: ");
-	printSet(set2);
+    printf("AVL inorder: ");
+    avl_print_inorder(avl_root);
+    printf("\n");
 
-	printf("Union of Set 1 and Set 2: ");
-	Node* unionSet = UnionSets(set1, set2);
-	printSet(unionSet);
+    bst_root = bst_insert(bst_root, 10);
+    bst_root = bst_insert(bst_root, 20);
+    bst_root = bst_insert(bst_root, 5);
 
-	printf("Intersection of Set 1 and Set 2: ");
-	Node* intersectSet = IntersectionSets(set1, set2);
-	printSet(intersectSet);
+    printf("BST inorder: ");
+    bst_print_inorder(bst_root);
+    printf("\n");
 
-	RemoveElement(&set1, 3);
-	printf("Set 1 after removing 3: ");
-	printSet(set1);
-
-
-
-	return 0;
+    avl_free(avl_root);
+    bst_free(bst_root);
+    return 0;
 }
